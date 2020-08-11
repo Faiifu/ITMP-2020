@@ -4,33 +4,112 @@
 	<title>Lab - Multimedia Programming 2563 ITKMITL</title>
 	<link rel=stylesheet href="../src/reset.css">
 	<link rel=stylesheet href="lab.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style type="text/css">
+		body{
+			font-family: 'Kanit', sans-serif;
+		}
+	</style>
 </head>
 <body class="paper">
 	<div id="app">
-		<input type="number">
-		<div class="space"></div>
-		<h4>{{number}} x 1 = x</h4>
-		<h4>{{number}} x 2 = x</h4>
-		<h4>{{number}} x 3 = x</h4>
-		<h4>{{number}} x 4 = x</h4>
-		<h4>{{number}} x 5 = x</h4>
-		<h4>{{number}} x 6 = x</h4>
-		<h4>{{number}} x 7 = x</h4>
-		<h4>{{number}} x 8 = x</h4>
-		<h4>{{number}} x 9 = x</h4>
-		<h4>{{number}} x 10 = x</h4>
-		<h4>{{number}} x 11 = x</h4>
-		<h4>{{number}} x 12 = x</h4>
-	</div>
-
-	<script>
-		let app = new Vue({
-			el: '#app',
-			data: {
-				number: 2
-			}
-		})
-	</script>
-</body>
-</html>
+		<div class="columns">
+			<div class="column is-2 is-offset-4">
+				<input class="input is-primary input-first" type="number" v-model="n">
+			</div>
+			<div class="column is-2">
+				<input class="input is-primary input-first" type="number" v-model="row">
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column is-offset-5">
+				<table class="table">
+					<div class="space"></div>
+					<thead>
+						<tr>
+							<th><h1 class="title is-4">สูตรคูณแม่ {{n}}</h1></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th><h5 class="title is-6">แม่ก่อนหน้า -> แม่ {{before_n}}</h5></th>
+						</tr>
+						<tr>
+							<td><h4 v-for="i in r">{{n}} x {{i}} = {{multiply(i)}}</h4></td>
+						</tr>
+						<tr>
+							<td><h4>ผลรวมทั้งหมด {{total}}</h4></td>
+						</tr>
+					</tbody>
+				</div>
+			</div>
+		</div>
+		<script>
+			let app = new Vue({
+				el: '#app',
+				data: {
+					n: 2,
+					before_n: 1,
+					row: 12
+				},
+				methods: {
+					multiply: function(row){
+						return this.n*row
+					}
+				},
+				computed: {
+					r: function(){
+						return parseInt(this.row)
+					},
+					x2: function(){
+						return this.n*2
+					},
+					x3: function(){
+						return this.n*3
+					},
+					x4: function(){
+						return this.n*4
+					},
+					x5: function(){
+						return this.n*5
+					},
+					x6: function(){
+						return this.n*6
+					},
+					x7: function(){
+						return this.n*7
+					},
+					x8: function(){
+						return this.n*8
+					},
+					x9: function(){
+						return this.n*9
+					},
+					x10: function(){
+						return this.n*10
+					},
+					x11: function(){
+						return this.n*11
+					},
+					x12: function(){
+						return this.n*12
+					},
+					total: function(){
+						let j = 0
+						for (var i = 1; i <= this.row; i++) {
+							j += this.multiply(i)
+						}
+						return j
+						}
+				},
+				watch: {
+					n: function(a,b){
+						this.before_n = b
+					}
+				}
+			})
+		</script>
+	</body>
+	</html>
