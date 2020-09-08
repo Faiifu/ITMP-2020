@@ -68,7 +68,7 @@ div.box{
 	background-color: #333;
 }
 .box._toggle{
-	background-image: url('arrow.png');
+	background-color: yellow;
 	transition: none;
 }
 .box._toggle[data-isRightarrow="0"]{
