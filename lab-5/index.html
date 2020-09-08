@@ -19,7 +19,7 @@
 				<div class="box _path" 
 				v-for="i in 14" 
 				:data-pst="i"></div>
-				<div class="box _toggle" data-pst="10" data-isrightarrow="1"></div>
+				<div class="box _toggle" data-pst="10" :data-isrightarrow="isRightArrow"></div>
 
 				<div class="box _fruit" v-for="f in fruits"
 				:data-pst="f.pst"></div>
@@ -31,10 +31,10 @@
 			</main>
 		</section>
 		<section id="canvas_footer">
-			<div v-if="play" class="btn" id="toggle">
+			<div v-if="play" class="btn" id="toggle" @click="swap()">
 				Toggle
 			</div>
-			<div v-if="!play" class="btn" id="endgame">
+			<div v-if="!play" class="btn" id="endgame" @click="restart">
 				Ene Game
 			</div>
 		</section>
@@ -70,7 +70,10 @@
 						this.isRightArrow = 1;
 					}
 				},
-				
+					restart(){
+						location.reload();
+					}
+
 			},
 			computed:{},
 			watch:{
