@@ -50,7 +50,6 @@ main{
 div.box{
 	width: var(--boxsize);
 	height: var(--boxsize);
-	background-color: orange;
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -65,14 +64,15 @@ div.box{
 	cursor: pointer;
 }
 #endgame{
-	background-color: #333;
+	background-color: #6886c6;
 }
 .box._toggle{
-	background-color: yellow;
+	background-color: #6886c6;
 	transition: none;
 }
 .box._toggle[data-isRightarrow="0"]{
-	background-color: red;
+	background-color: #fdc18d;
+
 }
 
 
@@ -110,13 +110,12 @@ div.box{
 	transform: rotate(-90deg);
 }
 .box._fruit{
-	background-color: yellow;
-	border-radius: 100%;
-	border: 3px solid #fffc;
+	background-image: url(dory.png);
 	transform: scale(.6);
+	background-size: cover
 }
 .box._fruit[data-type="red"]{
-	background-color: red;
+	background-image: url(nemo.png);
 }
 
 .box[data-pst="0"]{
