@@ -35,8 +35,8 @@
 		<div v-if="play" class="btn" id="toggle" @click="swap()">
 			Toggle
 		</div>
-		<div v-if="!play" class="btn" id="endgame">
-			Ene Game
+		<div v-if="!play" class="btn" id="endgame" onclick="location.reload()">
+			Play Again!
 		</div>
 	</section>
 </div>
@@ -96,7 +96,14 @@
 	})
 
 	let playing = setInterval(function(){
-		app.turn++	
+		app.turn++
+		if (rand(0,1)) {
+			let type = 'red'
+			if (rand(0,1)){
+				type = 'yellow'
+			}
+			app.fruits.push({id:nextFruitId,type:type,pst:0,run:true,step:1})
+		}
 	},500)
 </script>
 </body>
