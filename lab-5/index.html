@@ -22,6 +22,7 @@
 				<div class="box _toggle" data-pst="10" :data-isrightarrow="isRightArrow"></div>
 
 				<div class="box _fruit" v-for="f in fruits"
+				:data-type="f.type"
 				:data-pst="f.pst"></div>
 
 				<div class="box _origin"></div>
@@ -48,7 +49,7 @@
 		
 		let nextFruitId = 3 //
 		let isRightArrow = 1
-		let speed = 1000
+		let speed = 500
 		let app = new Vue({
 			el:'#canvas',
 			data:{
@@ -64,15 +65,8 @@
 			},
 			methods:{
 				swap: function(){
-					if (this.isRightArrow == 1) {
-						this.isRightArrow = 0;
-					} else {
-						this.isRightArrow = 1;
-					}
-				},
-					restart(){
-						location.reload();
-					}
+					this.isRightArrow = 1-this.isRightArrow
+				}
 
 			},
 			computed:{},
@@ -93,7 +87,7 @@
 
 		let playing = setInterval(function(){
 			app.turn++
-		},speed)
+		},500)
 	</script>
 </body>
 </html>
