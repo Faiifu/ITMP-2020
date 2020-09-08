@@ -20,7 +20,7 @@ body{
 	background-image: url('tile-grass.jpg');
 	background-size: 20%;
 	height: 50px;
-	color: white;
+	color: black;
 	font-weight: bold;
 }
 #canvas_main{
@@ -77,10 +77,17 @@ div.box{
 
 
 .box._12{
-	background-color: red;
+	/*background-color: red;*/
+	background-image: url('welcome-nemo.jpg');
+	background-size: cover;
 }
 .box._16{
-	background-color: yellow;
+	background-image: url('welcome-dory.jpg');
+	background-size: cover;
+}
+.box._origin{
+	background-image: url('nemo-dory.jpg');
+	background-size: cover;
 }
 .box._path{
 	background-color: black;
@@ -101,7 +108,7 @@ div.box{
 	border: 3px solid #fffc;
 	transform: scale(.6);
 }
-.box._fruit[data-type="11"]{
+.box._fruit[data-type="red"]{
 	background-color: red;
 }
 
