@@ -7,32 +7,90 @@
 	<link rel="stylesheet" type="text/css" href="lab.css">
 </head>
 <body>
+	<style type="text/css">
+		body {
+			margin:0;
+			width: 100vw;
+			height: 100vh;
+		}
+		#app {
+			text-align: center; 
+		}
+		.member {
+			width: 100vw;
+			background-color: hsl(200, 100%, 95%);
+			display: inline-block;
+		}
+		#name_member {
+			display: inline-block;
+			width: 25%;	
+		}
+		img {
+			width: 30%;
+			border-radius: .5em;
+		}
+	</style>
+
 	<div id="app">
-		
+		<h2>About</h2>
+		<h3>Username: {{person.username}}</h3>
+		<h3>Name: {{person.name}}</h3>
+		<h3>email: {{person.email}}</h3>
+		<h3>company: {{person.company.name}}</h3>
+
+		<div class="member">
+		<h2>Users</h2>
+			<h3 id="name_member" v-for="u in users" :data-id="u.id" @click="viewBio(u)">
+				<img :src="`https://picsum.photos/id/3${u.id}/300/300`">
+				<br>
+			{{u.username}}</h3>
+		</div>
 	</div>
 	
 
 	<script>
 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
-		.then(json => {console.log(json)})
-		let app = new Vue({
-			el: '#app',
-			data: {
-				users :[],
-				person:{
-					id:0,
-					name:'..loading',
-					username:'..loading',
-					email:'..loading',
-					website:'..loading',
-					company:{
-						name : '..loading',
-					}
-				}	
-			}
+		.then(json => {
+			console.log(json)
+			app.users = json
+			app.person = json[0]
 		})
 
+		let app = new Vue({
+			el: '#app',
+			methods: {
+				viewBio: function(user){
+					this.person = user
+				}
+			},
+			data: {
+				person: {
+					"id": 1,
+					"name": "_______",
+					"username": "_______",
+					"email": "_______",
+					"website": "_______",
+					"company": {
+						"name": "_______",
+						"catchPhrase": "Multi-layered client-server neural-net",
+						"bs": "harness real-time e-markets"
+					}
+				},
+				users : [{
+					"id": 1,
+					"name": "_______",
+					"username": "_______",
+					"email": "_______",
+					"website": "_______",
+					"company": {
+						"name": "_______",
+						"catchPhrase": "Multi-layered client-server neural-net",
+						"bs": "harness real-time e-markets"
+					}
+				}]
+			}
+		})
 	</script>
 </body>
 </html>
